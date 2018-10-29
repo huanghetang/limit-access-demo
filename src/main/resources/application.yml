@@ -1,0 +1,46 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: limit-access-demo
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+#自定义的属性
+#user:
+#  filter:
+#    diffUser: 0
+#    actionUrl: /test/*
+#    noRepeatTime: 10000 #-1 表示不限制
+access:
+  urlTimeAndUser:
+    - /test/*=30000,0
+    - /limit/*=10000,0
+
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+
+myprops: #自定义的属性和值
+  simpleProp: simplePropValue
+  arrayProps: 1,2,3,4,5
+  listProp1:
+    - name: abc
+      value: abcValue
+    - name: efg
+      value: efgValue
+  listProp2:
+    - config2Value1
+    - config2Vavlue2
+  mapProps:
+    key1: value1
+    key2: value2
+#配置日志
+logging:
+  #配置日志文件路径
+  level:
+    config: debug #不同目录下的日志可配置不同级别
+  #采用相对路径方式将日志文件输出到【log\myspringboot.log】
+  file: log\myspringboot.log
